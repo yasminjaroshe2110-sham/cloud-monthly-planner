@@ -15,6 +15,9 @@ const completedTasks = document.getElementById("completedTasks");
 const pendingTasks = document.getElementById("pendingTasks");
 const upcomingTasksDiv = document.getElementById("upcomingTasks");
 
+const checkApiBtn = document.getElementById("checkApiBtn");
+const apiResult = document.getElementById("apiResult");
+
 let tasks = JSON.parse(localStorage.getItem("tasks")) || {};
 
 let currentDate = new Date();
@@ -264,6 +267,20 @@ nextMonthBtn.addEventListener("click", function () {
 
 closeModal.addEventListener("click", function () {
     taskModal.style.display = "none";
+});
+
+checkApiBtn.addEventListener("click", function () {
+    apiResult.textContent = "Checking serverless API...";
+
+    fetch("https://k0b2fbyyzd.execute-api.il-central-1.amazonaws.com/status")
+        .then(response => response.json())
+        .then(data => {
+            apiResult.textContent = data.message + " (" + data.service + ")";
+        })
+        .catch(error => {
+            apiResult.textContent = "Error connecting to Serverless API";
+            console.error(error);
+        });
 });
 
 createMonthCalendar();
