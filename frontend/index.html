@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Monthly Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Cloud Monthly Planner</h1>
+
+    <div class="stats">
+        <div>Total Tasks: <span id="totalTasks">0</span></div>
+        <div>Completed: <span id="completedTasks">0</span></div>
+        <div>Pending: <span id="pendingTasks">0</span></div>
+    </div>
+
+    <div class="upcoming-container">
+        <h3>Upcoming Tasks</h3>
+        <div id="upcomingTasks"></div>
+    </div>
+
+    <div class="month-controls">
+        <button id="prevMonth">Previous</button>
+        <h2 id="monthTitle"></h2>
+        <button id="nextMonth">Next</button>
+    </div>
+
+    <div class="planner-form">
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <input type="date" id="dateInput">
+        <input type="time" id="timeInput">
+
+        <select id="categoryInput">
+            <option value="Study">Study</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+        </select>
+
+        <button id="addTaskBtn">Add Task</button>
+    </div>
+
+    <div class="calendar">
+        <div class="day-header">Sunday</div>
+        <div class="day-header">Monday</div>
+        <div class="day-header">Tuesday</div>
+        <div class="day-header">Wednesday</div>
+        <div class="day-header">Thursday</div>
+        <div class="day-header">Friday</div>
+        <div class="day-header">Saturday</div>
+    </div>
+
+    <div id="monthCalendar" class="month-calendar"></div>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2 id="modalDate"></h2>
+            <div id="modalTasks"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

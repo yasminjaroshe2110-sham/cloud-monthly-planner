@@ -1,0 +1,189 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px;
+    font-weight: bold;
+}
+
+.stats div {
+    background-color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.upcoming-container {
+    background: white;
+    width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.upcoming-item {
+    padding: 8px;
+    margin: 5px 0;
+    background: #f4f6f9;
+    border-radius: 5px;
+}
+
+.month-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 15px;
+}
+
+.planner-form {
+    margin: 20px;
+}
+
+input,
+select {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.calendar,
+.month-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.day-header {
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.day-cell {
+    background-color: white;
+    min-height: 120px;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+.date-number {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.empty {
+    background-color: transparent;
+    box-shadow: none;
+    cursor: default;
+}
+
+.task-count {
+    background-color: #e8f5e9;
+    padding: 6px;
+    margin-top: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.task-item {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.category-Study {
+    border-left: 5px solid #2196F3;
+}
+
+.category-Work {
+    border-left: 5px solid #FF9800;
+}
+
+.category-Personal {
+    border-left: 5px solid #4CAF50;
+}
+
+.task-actions button {
+    margin: 5px;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+.edit-btn {
+    background-color: #2196F3;
+}
+
+.done-btn {
+    background-color: #4CAF50;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 8% auto;
+    padding: 20px;
+    width: 450px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
