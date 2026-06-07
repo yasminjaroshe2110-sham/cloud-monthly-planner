@@ -63,7 +63,6 @@ function createMonthCalendar() {
             const count = document.createElement("div");
             count.className = "task-count";
             count.innerHTML = `${completedForDay}/${totalTasksForDay} Completed`;
-
             dateCell.appendChild(count);
         }
 
@@ -188,7 +187,6 @@ function updateStats() {
     Object.keys(tasks).forEach(function (date) {
         tasks[date].forEach(function (task) {
             total++;
-
             if (task.completed) {
                 completed++;
             }
@@ -218,10 +216,7 @@ function updateUpcomingTasks() {
     });
 
     upcoming.sort((a, b) => {
-        const first = new Date(`${a.date}T${a.time}`);
-        const second = new Date(`${b.date}T${b.time}`);
-
-        return first - second;
+        return new Date(`${a.date}T${a.time}`) - new Date(`${b.date}T${b.time}`);
     });
 
     if (upcoming.length === 0) {
@@ -232,16 +227,24 @@ function updateUpcomingTasks() {
     upcoming.slice(0, 5).forEach(item => {
         const div = document.createElement("div");
         div.className = "upcoming-item";
-
-        div.innerHTML = `
-            <strong>${item.date}</strong>
-            ${item.time}
-            - ${item.task}
-        `;
-
+        div.innerHTML = `<strong>${item.date}</strong> ${item.time} - ${item.task}`;
         upcomingTasksDiv.appendChild(div);
     });
 }
+
+checkApiBtn.addEventListener("click", function () {
+    apiResult.textContent = "Checking serverless API...";
+
+    fetch("https://k0b2fbyyzd.execute-api.il-central-1.amazonaws.com/status")
+        .then(response => response.json())
+        .then(data => {
+            apiResult.textContent = data.message + " (" + data.service + ")";
+        })
+        .catch(error => {
+            apiResult.textContent = "Error connecting to Serverless API";
+            console.error(error);
+        });
+});
 
 prevMonthBtn.addEventListener("click", function () {
     currentMonth--;
@@ -267,20 +270,6 @@ nextMonthBtn.addEventListener("click", function () {
 
 closeModal.addEventListener("click", function () {
     taskModal.style.display = "none";
-});
-
-checkApiBtn.addEventListener("click", function () {
-    apiResult.textContent = "Checking serverless API...";
-
-    fetch("https://k0b2fbyyzd.execute-api.il-central-1.amazonaws.com/status")
-        .then(response => response.json())
-        .then(data => {
-            apiResult.textContent = data.message + " (" + data.service + ")";
-        })
-        .catch(error => {
-            apiResult.textContent = "Error connecting to Serverless API";
-            console.error(error);
-        });
 });
 
 createMonthCalendar();
