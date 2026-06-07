@@ -8,56 +8,90 @@
 </head>
 <body>
 
-    <h1>Cloud Monthly Planner</h1>
+    <header class="hero">
+        <div>
+            <p class="badge">AWS Serverless Project</p>
+            <h1>Cloud Monthly Planner</h1>
+            <p class="subtitle">Plan tasks, track progress, and monitor your cloud API in one dashboard.</p>
+        </div>
+    </header>
 
-    <div class="stats">
-        <div>Total Tasks: <span id="totalTasks">0</span></div>
-        <div>Completed: <span id="completedTasks">0</span></div>
-        <div>Pending: <span id="pendingTasks">0</span></div>
-    </div>
+    <section class="stats">
+        <div class="stat-card total">
+            <span class="icon">📋</span>
+            <p>Total Tasks</p>
+            <h2 id="totalTasks">0</h2>
+        </div>
 
-    <div class="upcoming-container">
-        <h3>Upcoming Tasks</h3>
-        <div id="upcomingTasks"></div>
-    </div>
+        <div class="stat-card completed-card">
+            <span class="icon">✅</span>
+            <p>Completed</p>
+            <h2 id="completedTasks">0</h2>
+        </div>
 
-    <div class="serverless-container">
-    <h3>Serverless API Status</h3>
-    <button id="checkApiBtn">Check Serverless API</button>
-    <p id="apiResult">Click the button to test Lambda + API Gateway</p>
-    </div>
+        <div class="stat-card pending-card">
+            <span class="icon">⏳</span>
+            <p>Pending</p>
+            <h2 id="pendingTasks">0</h2>
+        </div>
+    </section>
 
-    <div class="month-controls">
-        <button id="prevMonth">Previous</button>
-        <h2 id="monthTitle"></h2>
-        <button id="nextMonth">Next</button>
-    </div>
+    <main class="dashboard">
 
-    <div class="planner-form">
-        <input type="text" id="taskInput" placeholder="Enter a task">
-        <input type="date" id="dateInput">
-        <input type="time" id="timeInput">
+        <section class="panel upcoming-container">
+            <div class="panel-header">
+                <h3>Upcoming Tasks</h3>
+                <span>Next events</span>
+            </div>
+            <div id="upcomingTasks"></div>
+        </section>
 
-        <select id="categoryInput">
-            <option value="Study">Study</option>
-            <option value="Work">Work</option>
-            <option value="Personal">Personal</option>
-        </select>
+        <section class="panel serverless-container">
+            <div class="panel-header">
+                <h3>Serverless API Status</h3>
+                <span>Lambda + API Gateway</span>
+            </div>
+            <button id="checkApiBtn">Check Serverless API</button>
+            <p id="apiResult">Click the button to test Lambda + API Gateway</p>
+        </section>
 
-        <button id="addTaskBtn">Add Task</button>
-    </div>
+    </main>
 
-    <div class="calendar">
-        <div class="day-header">Sunday</div>
-        <div class="day-header">Monday</div>
-        <div class="day-header">Tuesday</div>
-        <div class="day-header">Wednesday</div>
-        <div class="day-header">Thursday</div>
-        <div class="day-header">Friday</div>
-        <div class="day-header">Saturday</div>
-    </div>
+    <section class="planner-box">
 
-    <div id="monthCalendar" class="month-calendar"></div>
+        <div class="month-controls">
+            <button id="prevMonth">← Previous</button>
+            <h2 id="monthTitle"></h2>
+            <button id="nextMonth">Next →</button>
+        </div>
+
+        <div class="planner-form">
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <input type="date" id="dateInput">
+            <input type="time" id="timeInput">
+
+            <select id="categoryInput">
+                <option value="Study">Study</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+            </select>
+
+            <button id="addTaskBtn">Add Task</button>
+        </div>
+
+        <div class="calendar">
+            <div class="day-header">Sunday</div>
+            <div class="day-header">Monday</div>
+            <div class="day-header">Tuesday</div>
+            <div class="day-header">Wednesday</div>
+            <div class="day-header">Thursday</div>
+            <div class="day-header">Friday</div>
+            <div class="day-header">Saturday</div>
+        </div>
+
+        <div id="monthCalendar" class="month-calendar"></div>
+
+    </section>
 
     <div id="taskModal" class="modal">
         <div class="modal-content">
